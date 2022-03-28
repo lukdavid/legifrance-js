@@ -24,3 +24,10 @@ jobs:
         run: npm ci
       - run: npm run type-check
       - run: npm run lint
+      - name: Run unit tests
+        run: |
+          pwd
+          mkdir .jest
+          echo process.env.CLIENT_ID = '${CLIENT_ID}'; > .jest/setEnvVars.js
+          echo process.env.CLIENT_SECRET = '${CLIENT_SECRET}'; > .jest/setEnvVars.js
+          npm test
