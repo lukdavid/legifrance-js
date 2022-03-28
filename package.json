@@ -4,12 +4,13 @@
   "description": "A javascript wrapper for Legifrance API",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "tsc": "tsc"
   },
   "author": "Lucas David",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
@@ -18,12 +19,14 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
     "prettier": "^2.6.0",
+    "ts-jest": "^27.1.4",
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "axios": "^0.26.1",
-    "dotenv": "^16.0.0"
+    "axios": "^0.26.1"
   }
 }
