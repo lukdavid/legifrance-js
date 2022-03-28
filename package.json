@@ -1,0 +1,29 @@
+{
+  "name": "legifrance-js",
+  "version": "1.0.0",
+  "description": "A javascript wrapper for Legifrance API",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "author": "Lucas David",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0"
+  }
+}
