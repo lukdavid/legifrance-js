@@ -28,7 +28,7 @@ jobs:
         run: |
           pwd
           mkdir .jest
-          echo process.env.CLIENT_ID = '${{secrets.CLIENT_ID}}'; > .jest/setEnvVars.js
-          echo process.env.CLIENT_SECRET = '${{secrets.CLIENT_SECRET}}'; > .jest/setEnvVars.js
+          echo "process.env.CLIENT_ID = '${{secrets.CLIENT_ID}}';" >> .jest/setEnvVars.js
+          echo "process.env.CLIENT_SECRET = '${{secrets.CLIENT_SECRET}}';" >> .jest/setEnvVars.js
           ls .jest
           npm test
