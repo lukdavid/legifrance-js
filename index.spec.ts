@@ -23,7 +23,7 @@ describe('Consult methods', () => {
     expect(ping).toBeTruthy();
   });
 
-  it('Should get JuriText', async () => {
+  it('Should get JuriText by id', async () => {
     const juriText = await client.getJuritext('JURITEXT000045349899');
     const { dateTexte, juridiction, texteHtml, numeroAffaire, solution } =
       juriText;
@@ -34,5 +34,19 @@ describe('Consult methods', () => {
     expect(juridiction).toBe('Cour de cassation');
     expect(numeroAffaire).toStrictEqual(['19-23.496']);
     expect(solution).toBe('Cassation sans renvoi');
+  });
+
+  it('Should get code article by cid', async () => {
+    const requestedCid = 'LEGIARTI000006419295'; // 16-3 du Code civil
+    const article = await client.getArticle(requestedCid);
+    const { cid, num, versions } = article;
+    expect(cid).toBe(requestedCid);
+    expect(num).toBe('16-3');
+    expect(versions.length).toBeGreaterThanOrEqual(3);
+    const firstVersion = versions[versions.length - 1];
+    expect(firstVersion.texteHtml.length).toBeGreaterThan(300);
+    expect(firstVersion.context.titresTM[0].titre).toBe(
+      'Livre Ier : Des personnes',
+    );
   });
 });

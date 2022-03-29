@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import axios, { AxiosInstance } from 'axios';
-import { JuriText, JuriTextRaw } from './models';
+import { Article, ArticleVersionRaw, JuriText, JuriTextRaw } from './models';
 
 const OAUTH_URL = 'https://oauth.aife.economie.gouv.fr/api/oauth/token';
 const BASE_URL = 'https://api.piste.gouv.fr/dila/legifrance-beta/lf-engine-app';
@@ -49,6 +49,16 @@ class LegifranceClient {
     const response = await this.instance.post('consult/juri', { textId });
     const raw = response.data as { text: JuriTextRaw };
     return new JuriText(raw.text);
+  }
+
+  async getArticle(cid: string): Promise<Article> {
+    const response = await this.instance.post('consult/getArticleByCid', {
+      cid,
+    });
+    const { listArticle } = response.data as {
+      listArticle: ArticleVersionRaw[];
+    };
+    return new Article(cid, listArticle);
   }
 }
 
