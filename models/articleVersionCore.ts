@@ -1,9 +1,5 @@
-interface SectionData {
-  cid: string;
-  etat: string; // TODO : get options, at least "VIGUEUR" | "MODIFIE" | "ABROGE"
-  id: string;
-  titre: string;
-}
+import Etat from './etat';
+import BaseReference from './baseReference';
 
 interface LinkData {
   textCid: string;
@@ -17,8 +13,8 @@ interface LinkData {
 
 class ArticleVersionCore {
   context: {
-    titresTM: SectionData[];
-    titreTxt: SectionData;
+    titresTM: BaseReference[];
+    titreTxt: BaseReference;
   };
 
   etat: string;
@@ -61,10 +57,10 @@ class ArticleVersionCore {
     versionArticle,
   }: {
     context: {
-      titresTM: SectionData[];
-      titreTxt: SectionData;
+      titresTM: BaseReference[];
+      titreTxt: BaseReference;
     };
-    etat: string;
+    etat: Etat;
     id: string;
     lienAutres: LinkData[];
     lienCitations: LinkData[];
