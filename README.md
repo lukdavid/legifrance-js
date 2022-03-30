@@ -2,18 +2,32 @@
 
 A Javascript wrapper for Legifrance API
 
-## Tests
+## Aim
 
-Test run with [ts-jest](https://kulshekhar.github.io/ts-jest). They need Oauth credentials to access API. To run tests locally, first create a file
+Providing an easy-to-use interface to Legifrance Database, with typed models.
+For now I just implemented method that I needed but the API has much more endpoints (see its documentation).
 
-```js
-// .jest/setEnvVars.js
-process.env.CLIENT_ID = '';
-process.env.CLIENT_SECRET = '';
+## Getting started
+
+First you need Oauth credentials for the API. To get them register on [PISTE](https://developer.aife.economie.gouv.fr/) and follow documentation.
+
+Once you have credentials (`client_id` and `client_secret`), you can initialize and authenticate a client :
+
+```ts
+import LegifranceClient from 'legifrance-js';
+
+const client = new LegifranceClient(clientId, clientSecret);
+client.authenticate();
 ```
 
-and fill it with your Oauth credentials. You can then run tests with the command
+## Available methods
 
-```bash
-npm run test
+```ts
+const ping = await client.consultPing(); // true | false : test API response
+
+const juriText = await client.getJuritext('JURITEXT000045349899'); // get text from JURI database by textId
+
+const article = await client.getarticle('LEGIARTI000006419295'); // get article by cid
+
+const code = await client.getCode('LEGITEXT000006070721'); // get code by textId
 ```
