@@ -48,5 +48,10 @@ describe('Consult methods', () => {
     expect(firstVersion.context.titresTM[0].titre).toBe(
       'Livre Ier : Des personnes',
     );
+    expect(
+      firstVersion.lienModifications.map(({ textTitle }) => textTitle),
+    ).toContain(
+      'Loi n°94-653 du 29 juillet 1994 - art. 3 () JORF 30 juillet 1994',
+    );
   });
 });

@@ -5,6 +5,16 @@ interface SectionData {
   titre: string;
 }
 
+interface LinkData {
+  textCid: string;
+  textTitle: string;
+  linkType: string;
+  articleNum: string;
+  articleId: string;
+  natureText: string;
+  linkOrientation: 'source' | 'cible';
+}
+
 class ArticleVersionCore {
   context: {
     titresTM: SectionData[];
@@ -14,6 +24,14 @@ class ArticleVersionCore {
   etat: string;
 
   id: string;
+
+  lienAutres: LinkData[];
+
+  lienCitations: LinkData[];
+
+  lienConcordes: LinkData[];
+
+  lienModifications: LinkData[];
 
   num: string;
 
@@ -31,6 +49,10 @@ class ArticleVersionCore {
     context,
     etat,
     id,
+    lienAutres,
+    lienCitations,
+    lienConcordes,
+    lienModifications,
     num,
     origine,
     texte,
@@ -44,6 +66,10 @@ class ArticleVersionCore {
     };
     etat: string;
     id: string;
+    lienAutres: LinkData[];
+    lienCitations: LinkData[];
+    lienConcordes: LinkData[];
+    lienModifications: LinkData[];
     num: string;
     origine: string;
     texte: string;
@@ -54,6 +80,10 @@ class ArticleVersionCore {
     this.context = context;
     this.etat = etat;
     this.id = id;
+    this.lienAutres = lienAutres;
+    this.lienCitations = lienCitations;
+    this.lienConcordes = lienConcordes;
+    this.lienModifications = lienModifications;
     this.num = num;
     this.origine = origine;
     this.texte = texte;
