@@ -1,13 +1,19 @@
 import Section from './section';
 import { dateConverters } from '../utils/date';
 
-interface CodeRaw extends Section {
+export interface CodeRaw extends Section {
   nature: string;
+  dateDebutVersion: string;
+  dateFinVersion: string;
   modifDate: string;
 }
 
 class Code extends Section {
   nature: string;
+
+  dateDebutVersion: Date;
+
+  dateFinVersion: Date;
 
   modifDate: Date;
 
@@ -15,6 +21,8 @@ class Code extends Section {
     super(raw);
     this.nature = raw.nature;
     this.modifDate = dateConverters.fromRaw(raw.modifDate);
+    this.dateDebutVersion = dateConverters.fromRaw(raw.dateDebutVersion);
+    this.dateFinVersion = dateConverters.fromRaw(raw.dateFinVersion);
   }
 }
 

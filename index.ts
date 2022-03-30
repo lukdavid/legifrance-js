@@ -1,6 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import axios, { AxiosInstance } from 'axios';
-import { Article, ArticleVersionRaw, JuriText, JuriTextRaw } from './models';
+import {
+  Article,
+  ArticleVersionRaw,
+  Code,
+  CodeRaw,
+  JuriText,
+  JuriTextRaw,
+} from './models';
+import { dateConverters } from './utils/date';
 
 const OAUTH_URL = 'https://oauth.aife.economie.gouv.fr/api/oauth/token';
 const BASE_URL = 'https://api.piste.gouv.fr/dila/legifrance-beta/lf-engine-app';
@@ -59,6 +67,20 @@ class LegifranceClient {
       listArticle: ArticleVersionRaw[];
     };
     return new Article(cid, listArticle);
+  }
+
+  async getCode(
+    textId: string,
+    abrogated = false,
+    date = new Date(),
+  ): Promise<Code> {
+    const response = await this.instance.post('consult/code/tableMatieres', {
+      abrogated,
+      textId,
+      date: dateConverters.toRaw(date),
+    });
+    const raw = response.data as CodeRaw;
+    return new Code(raw);
   }
 }
 

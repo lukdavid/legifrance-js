@@ -10,9 +10,9 @@ interface SectionData {
 
   title: string;
 
-  articles?: BaseReference[];
+  articles: BaseReference[];
 
-  sections?: SectionData[];
+  sections: SectionData[];
 }
 
 class Section implements SectionData {
@@ -24,9 +24,9 @@ class Section implements SectionData {
 
   title: string;
 
-  articles?: BaseReference[];
+  articles: BaseReference[];
 
-  sections?: SectionData[];
+  sections: SectionData[];
 
   constructor({
     id,
@@ -40,8 +40,8 @@ class Section implements SectionData {
     cid: string;
     etat: Etat;
     title: string;
-    articles?: BaseReference[];
-    sections?: Section[];
+    articles: BaseReference[];
+    sections: Section[];
   }) {
     this.id = id;
     this.cid = cid;
